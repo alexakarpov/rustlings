@@ -1,0 +1,15 @@
+/*
+Wrap in all modes with the wrapping_* methods, such as wrapping_add
+Return the None value if there is overflow with the checked_* methods
+Return the value and a boolean indicating whether there was overflow with the overflowing_* methods
+Saturate at the value’s minimum or maximum values with saturating_* methods
+
+*/
+
+fn main() {
+    println!("Hello world");
+    let tup = (12, 42.2, 33 / 2);
+    let (x, y, z) = tup;
+
+    println!("x is {x}, y is {y}, z is {z}");
+}
