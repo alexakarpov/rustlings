@@ -7,7 +7,7 @@ fn main() {
 
     let secret_number = rand::thread_rng().gen_range(1..=100);
 
-    const NUM_TRIES: i32 = 10;
+    // const NUM_TRIES: i32 = 10;
 
     loop {
         println!("Please input your guess.");
