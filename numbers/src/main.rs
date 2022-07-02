@@ -12,6 +12,7 @@ fn main() {
     let u = println!("Hello world");
     let tup = (12, 42.2, 33 / 2, u);
     let (x, y, z, _) = tup;
+    println!("x is {x}, y is {y}, z is {z} and last is a unit");
 
     let months = [
         "January",
@@ -27,18 +28,16 @@ fn main() {
         "November",
         "December",
     ];
-    // error[E0277]: `()` doesn't implement `std::fmt::Display`
-    println!("x is {x}, y is {y}, z is {z} and last is a {{u}}");
 
-    another_function();
-
-    println!("Please enter an array index.");
+    println!("please enter an array index (0 to 11):");
 
     let mut index = String::new();
 
     io::stdin()
         .read_line(&mut index)
         .expect("Failed to read line");
+
+    println!("entered {index} (a string with a newline)");
 
     let index: usize = index
         .trim()
@@ -51,6 +50,6 @@ fn main() {
 }
 
 // can be declared in a function scope, and after the invocation
-fn another_function() {
-    println!("another f")
+fn _inc(n: i32) -> i32 {
+    n + 1
 }
