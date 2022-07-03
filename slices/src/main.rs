@@ -11,10 +11,10 @@ fn first_word(s: &str) -> &str {
 }
 
 fn main() {
-    let my_string = String::from("hello world");
+    let my_string = String::from("String hello world");
 
     // `first_word` works on slices of `String`s, whether partial or whole
-    let word = first_word(&my_string[0..6]);
+    let word = first_word(&my_string[0..4]);
     println!("word1: {}", word);
     let word = first_word(&my_string[..]);
     println!("word2: {}", word);
@@ -22,7 +22,7 @@ fn main() {
     // to whole slices of `String`s
     let word = first_word(&my_string);
     println!("word3: {}", word);
-    let my_string_literal = "hello world";
+    let my_string_literal = "my_string_literal";
 
     // `first_word` works on slices of string literals, whether partial or whole
     let word = first_word(&my_string_literal[0..6]);
