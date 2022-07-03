@@ -1,4 +1,5 @@
 #![allow(dead_code)]
+#[derive(Debug)]
 struct User {
     active: bool,
     username: String,
@@ -44,6 +45,9 @@ fn main() {
 
     assert_eq!(user2.email, "u2@email.com");
     assert_eq!(user3.email, "qwe");
+
+    let (a, b) = (3, 4);
+    assert_ne!(a, b);
 
     println!("{}", xemail(user2));
 }
