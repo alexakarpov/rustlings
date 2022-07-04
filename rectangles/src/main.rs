@@ -16,12 +16,20 @@ impl Rectangle {
     }
 }
 
+impl Rectangle {
+    // multiple impl blocks are OK
+    fn square(size: u32) -> Rectangle {
+        Rectangle {
+            width: size,
+            height: size,
+        }
+    }
+}
+
 fn main() {
     let scale = 2;
-    let rect1 = Rectangle {
-        width: 30,
-        height: 50,
-    };
+    let rect1 = Rectangle::square(50);
+
     let rect2 = Rectangle {
         width: 10,
         height: 40,
@@ -37,17 +45,17 @@ fn main() {
 
     println!(
         "The area of the rectangle is {} square pixels.",
-        rect1.area() // what if we skip the ref? which is really an immutable borrow..
+        rect1.area()
     );
 
     println!(
         "The area of the rectangle is {} square pixels.",
-        rect2.area() // what if we skip the ref? which is really an immutable borrow..
+        rect2.area()
     );
 
     println!(
         "The area of the rectangle is {} square pixels.",
-        rect3.area() // what if we skip the ref? which is really an immutable borrow..
+        rect3.area()
     );
 
     println!("Can rect1 hold rect2? {}", rect1.can_hold(&rect2));
