@@ -20,6 +20,20 @@ fn build_user(email: String, username: String) -> User {
     }
 }
 
+#[derive(Debug)]
+struct Counter {
+    count: u32,
+}
+
+impl Counter {
+    fn new(c: u32) -> Counter {
+        Counter { count: c }
+    }
+    fn inc(&mut self) -> () {
+        self.count += 1
+    }
+}
+
 fn main() {
     let mut user1 = User {
         email: String::from("u1@example.com"),
@@ -50,4 +64,11 @@ fn main() {
     assert_ne!(a, b);
 
     println!("{}", xemail(user2));
+
+    // -----------------------
+    let mut cnt = Counter::new(11);
+    println!("initially counter is: {:?}", cnt);
+    cnt.inc();
+    println!("finally, counter is: {:?}", cnt);
+    println!("once more, counter is: {:?}", cnt);
 }
