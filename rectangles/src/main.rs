@@ -1,3 +1,5 @@
+// #![allow(dead_code)]
+
 #[derive(Debug)]
 struct Rectangle {
     width: u32,
@@ -6,7 +8,7 @@ struct Rectangle {
 
 impl Rectangle {
     fn area(&self) -> u32 {
-        // what if ^
+        // borrows self immutably
         self.width * self.height
     }
 }
