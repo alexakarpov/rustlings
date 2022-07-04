@@ -69,6 +69,7 @@ fn main() {
     let mut cnt = Counter::new(11);
     println!("initially counter is: {:?}", cnt);
     cnt.inc();
-    println!("finally, counter is: {:?}", cnt);
     println!("once more, counter is: {:?}", cnt);
+    cnt.inc();
+    println!("finally, counter is: {:?}", cnt);
 }
