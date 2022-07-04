@@ -32,6 +32,9 @@ impl Counter {
     fn inc(&mut self) -> () {
         self.count += 1
     }
+    fn report(self) -> () {
+        println!("{}", self.count);
+    }
 }
 
 fn main() {
