@@ -1,11 +1,25 @@
-enum IpAddr {
-    V4(String),
-    V6(String),
+#[derive(Debug)]
+enum Message {
+    Quit,
+    Move { x: i32, y: i32 },
+    Write(String),
+    ChangeColor(i32, i32, i32),
+}
+
+impl Message {
+    fn call(&self) {
+        println!("calling...");
+        dbg!(self);
+    }
 }
 
 fn main() {
-    let home = IpAddr::V4(String::from("127.0.0.1"));
-    let loopback = IpAddr::V6(String::from("::1"));
-    // route(IpAddr::V4);
-    // route(IpAddr::V6);
+    let m1 = Message::Write(String::from("hello"));
+    let m2 = Message::Quit;
+    let m3 = Message::Move {x:11,y:22};
+    let m4 = Message::ChangeColor(21,32,43);
+    m1.call();
+    m2.call();
+    m3.call();
+    m4.call();
 }
