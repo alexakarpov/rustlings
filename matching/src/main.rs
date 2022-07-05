@@ -3,33 +3,45 @@ enum Coin {
     Penny,
     Nickel,
     Dime,
-    Quarter,
+    Quarter(UsState),
 }
 
-fn value_in_cents(coin: Option<Coin>) -> u8 {
+#[derive(Debug, Copy, Clone, PartialEq)] // so we can inspect the state in a minute
+enum UsState {
+    Alabama,
+    Alaska,
+    Massachusets,
+    Nevada,
+    California,
+    Texas,
+}
+
+fn value_in_cents(coin: Coin) -> u8 {
     match coin {
-        Some(Coin::Penny) => { // to show we can
+        Coin::Penny => {
+            // to show we can
             println!("Lucky penny!");
             1
-        },
-        Some(Coin::Nickel) => 5,
-        Some(Coin::Dime) => 10,
-        Some(Coin::Quarter) => 25,
-        None => 0
+        }
+        Coin::Nickel => 5,
+        Coin::Dime => 10,
+        Coin::Quarter(state) => {
+            println!("State quarter from {:?}!", state);
+            25
+        }
     }
 }
 
 fn main() {
     let p = Coin::Penny;
     let n = Coin::Nickel;
-    let q1 = Coin::Quarter;
-    let q2 = Coin::Quarter;
-    println!("{}", value_in_cents(Some(p)));
-    println!("{}", value_in_cents(Some(n)));
-    println!("{}", value_in_cents(Some(q1)));
+    let q1 = Coin::Quarter(UsState::Texas);
+    let q2 = Coin::Quarter(UsState::Nevada);
+    println!("{}", value_in_cents(p));
+    println!("{}", value_in_cents(n));
+    println!("{}", value_in_cents(q1));
     // the code below won't work after the variables are moved
     // in value_in_cents calls, unless Copy and Clone are derived
-    assert_ne!(Some(p), Some(n));
-    assert_eq!(value_in_cents(Some(q1)), value_in_cents(Some(q2)));
-    assert_eq!(value_in_cents(None), 0);
+    assert_ne!(p, n);
+    assert_eq!(value_in_cents(q1), value_in_cents(q2));
 }
