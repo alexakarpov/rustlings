@@ -8,7 +8,10 @@ enum Coin {
 
 fn value_in_cents(coin: Option<Coin>) -> u8 {
     match coin {
-        Some(Coin::Penny) => 1,
+        Some(Coin::Penny) => { // to show we can
+            println!("Lucky penny!");
+            1
+        },
         Some(Coin::Nickel) => 5,
         Some(Coin::Dime) => 10,
         Some(Coin::Quarter) => 25,
@@ -28,4 +31,5 @@ fn main() {
     // in value_in_cents calls, unless Copy and Clone are derived
     assert_ne!(Some(p), Some(n));
     assert_eq!(value_in_cents(Some(q1)), value_in_cents(Some(q2)));
+    assert_eq!(value_in_cents(None), 0);
 }
