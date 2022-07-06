@@ -67,8 +67,8 @@ fn main() {
     assert_eq!(none, None);
     assert_eq!(six, Some(6i32));// i32 is the default
 
-    let config_max = Some(33i32);
-    // let config_max: Option<i32> = None;
+    // let config_max = Some(33i32);
+    let config_max: Option<i32> = None;
 //     match config_max {
 //         Some(max) => println!("The maximum is configured to be {}", max),
 //         _ => (),
@@ -77,5 +77,7 @@ fn main() {
 
     if let Some(max) = config_max {
         println!("The maximum is configured to be {}", max);
+    } else {
+        println!("The max ain't configured");
     }
 }
