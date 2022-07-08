@@ -12,22 +12,29 @@ mod tests {
 pub const GREETING: &'static str = "Hallo, GREETIN is pub consts from lib.rs";
 
 mod front_of_house {
-    mod hosting {
-        fn add_to_waitlist() {}
+    pub mod hosting {
+        // note that both gotta be pub
+        pub fn add_to_waitlist() {
+            println!("adding to waitlist...");
+        }
 
         fn seat_at_table() {}
     }
 
-    mod serving {
+    pub mod serving {
         fn take_order() {}
 
-        fn serve_order() {}
+        pub fn serve_order() {
+            // super::deliver_order(); // FIXME
+        }
 
         fn take_payment() {}
     }
 }
 
-fn deliver_order() {}
+pub fn deliver_order() {
+    println!("deliver_order");
+}
 
 mod back_of_house {
     fn fix_incorrect_order() {
@@ -61,7 +68,10 @@ mod back_of_house {
 }
 
 pub fn eat_at_restaurant() {
-    dbg!("eat_at_restaurant");
+    use front_of_house::hosting;
+    use front_of_house::serving;
+    hosting::add_to_waitlist();
+    crate::front_of_house::serving::serve_order();
     // Order a breakfast in the summer with Rye toast
     let mut meal = dbg!(back_of_house::Breakfast::summer("Rye"));
     // Change our mind about what bread we'd like
