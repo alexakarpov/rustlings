@@ -11,26 +11,7 @@ mod tests {
 
 pub const GREETING: &'static str = "Hallo, GREETIN is pub consts from lib.rs";
 
-mod front_of_house {
-    pub mod hosting {
-        // note that both gotta be pub
-        pub fn add_to_waitlist() {
-            println!("adding to waitlist...");
-        }
-
-        fn seat_at_table() {}
-    }
-
-    pub mod serving {
-        fn take_order() {}
-
-        pub fn serve_order() {
-            // super::deliver_order(); // FIXME
-        }
-
-        fn take_payment() {}
-    }
-}
+mod front_of_house;
 
 pub fn deliver_order() {
     println!("deliver_order");
