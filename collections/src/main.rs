@@ -18,6 +18,7 @@ fn main() {
             .expect("failed to read input");
 
         let index: usize = match idx.trim().parse() {
+            Ok(999) => break, // magic exit value :)
             Ok(num) => num,
             Err(_) => continue,
         };
