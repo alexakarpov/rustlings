@@ -1,15 +1,17 @@
 use std::io;
 
 fn main() {
-    // let v1: Vec<i32> = Vec::new();
-    // infer int32: (note the ! macro)
     let mut v = vec![1, 2, 3];
+
+    for i in &v {
+        println!("{}", i);
+    }
 
     let third: &i32 = &v[2];
     println!("The third element is {}", third);
 
     loop {
-        println!("pick index");
+        println!("enter [0-based] index: ");
         let mut idx = String::new();
         io::stdin()
             .read_line(&mut idx)
