@@ -1,5 +1,6 @@
 // use std::fmt;
 use std::io;
+// use std::string::String;
 
 #[derive(Debug)]
 enum X {
@@ -9,21 +10,18 @@ enum X {
 }
 
 fn main() {
-    let mut v = vec![X::Int(42), X::Float(3.14), X::Text(String::from("LOL"))];
+    let mut v = vec![X::Int(42), X::Float(3.14), X::Text(String::from("lol"))];
 
     for it in &mut v {
         match it {
             X::Int(n) => *n *= 100,
             X::Float(n) => *n *= 1000.0,
-            X::Text(s) => {
-                String::from("lolwut");
-                ()
-            }
+            X::Text(s) => s.make_ascii_uppercase(),
         }
     }
 
-    for i in &v {
-        dbg!(i);
+    for it in &v {
+        dbg!(it);
     }
 
     // let third: &i32 = &v[2]; // unsafe reading from a vector
