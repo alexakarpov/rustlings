@@ -57,10 +57,17 @@ fn main() {
     for c in dev_chars {
         println!("{:?}", c);
     }
-    println!("dev_graphemess");
+    println!("dev_graphemes");
     for g in dev_graphemes {
         println!("{:?}", g);
     }
+
+    println!("ru bytes");
+    for c in hello.bytes() {
+        print!("/{}", c);
+    }
+    println!(); // NL
+    println!("{}", hello);
 
     /*
     note: the only appropriate formatting traits are:
@@ -75,5 +82,5 @@ fn main() {
            - `X`, which uses the `UpperHex` trait
 
     */
-    println!("All good - {:?}", s);
+    println!("All good");
 }
