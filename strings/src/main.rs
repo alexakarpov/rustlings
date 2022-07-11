@@ -37,8 +37,13 @@ fn main() {
     let s3 = String::from("toe");
 
     let s = format!("{}-{}-{}", s1, s2, s3);
-    // ^ uses references hence takes no ownership
-    let hello = String::from("你好");
+    // ^ uses references hence takes no ownership:
     assert_eq!(s, "tic-tac-toe");
+    assert_eq!(s1, "tic");
+    assert_eq!(s2, "tac");
+    assert_eq!(s3, "toe");
+
+    let hello = String::from("你好");
+
     println!("All good - {}", hello);
 }
