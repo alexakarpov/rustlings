@@ -42,8 +42,38 @@ fn main() {
     assert_eq!(s1, "tic");
     assert_eq!(s2, "tac");
     assert_eq!(s3, "toe");
+    // devangari
+    let _dev_bytes = [
+        224, 164, 168, 224, 164, 174, 224, 164, 184, 224, 165, 141, 224, 164, 164, 224, 165, 135,
+    ];
+    let dev_chars = ['न', 'म', 'स', '्', 'त', 'े'];
+    let dev_graphemes = ["न", "म", "स्", "ते"];
 
-    let hello = String::from("你好");
+    let hello = "Здравствуйте";
 
-    println!("All good - {}", hello);
+    let s = &hello[0..6]; // 4 bytes make 2 characters, 0..3 => panic
+
+    println!("dev_chars");
+    for c in dev_chars {
+        println!("{:?}", c);
+    }
+    println!("dev_graphemess");
+    for g in dev_graphemes {
+        println!("{:?}", g);
+    }
+
+    /*
+    note: the only appropriate formatting traits are:
+           - ``, which uses the `Display` trait
+           - `?`, which uses the `Debug` trait
+           - `e`, which uses the `LowerExp` trait
+           - `E`, which uses the `UpperExp` trait
+           - `o`, which uses the `Octal` trait
+           - `p`, which uses the `Pointer` trait
+           - `b`, which uses the `Binary` trait
+           - `x`, which uses the `LowerHex` trait
+           - `X`, which uses the `UpperHex` trait
+
+    */
+    println!("All good - {:?}", s);
 }
