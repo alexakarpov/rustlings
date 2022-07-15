@@ -21,5 +21,19 @@ fn main() {
 
         println!("team {} score: {}", t, s);
     }
+
+    let mut scores2 = HashMap::new();
+
+    scores2.insert(String::from("Red"), 20);
+    scores2.insert(String::from("Green"), 50);
+    scores2.insert(String::from("White"), 40);
+
+    for (key, value) in &scores2 {
+        println!("{}: {}", key, value);
+    }
+
+    println!("length of 1: {}", scores.len());
+    println!("length of 2: {}", scores2.len());
+
     println!("ok");
 }
