@@ -24,9 +24,12 @@ fn main() {
 
     let mut scores2 = HashMap::new();
 
+    // these calls will borrow the map as mutable, so mut is required ^
     scores2.insert(String::from("Red"), 20);
     scores2.insert(String::from("Green"), 50);
     scores2.insert(String::from("White"), 40);
+    scores2.entry(String::from("Red")).or_insert(100); //ignored
+    scores2.entry(String::from("Black")).or_insert(100);
 
     for (key, value) in &scores2 {
         println!("{}: {}", key, value);
@@ -34,6 +37,18 @@ fn main() {
 
     println!("length of 1: {}", scores.len());
     println!("length of 2: {}", scores2.len());
+
+    println!("{:?}", scores2);
+    let text = "hello world  wonderful world";
+
+    let mut map = HashMap::new();
+
+    for word in text.split_whitespace() {
+        let count = map.entry(word).or_insert(0);
+        *count += 1;
+    }
+
+    println!("{:?}", map);
 
     println!("ok");
 }
