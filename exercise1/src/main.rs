@@ -22,7 +22,7 @@ fn main() {
     println!("median is {:?}", med);
 }
 
-fn median(numbers) {
+fn median(numbers: &mut [i32]) -> i32 {
     numbers.sort();
     let mid = numbers.len() / 2;
     numbers[mid]
