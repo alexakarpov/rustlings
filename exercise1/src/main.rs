@@ -17,13 +17,23 @@
 
 fn main() {
     let mut si = [2, 12, 1, 45, 14, 3, 16, 29, 9, 12, 45, 28, 45];
-    println!("si: {:?}", si);
+    println!("mutable array: {:?}, of {:?} elements", si, report(&si));
     let med = median(&mut si);
+    let ave: f32 = average(&si);
     println!("median is {:?}", med);
+    println!("average is {:?}", ave);
 }
 
 fn median(numbers: &mut [i32]) -> i32 {
     numbers.sort();
     let mid = numbers.len() / 2;
     numbers[mid]
+}
+
+fn average(numbers: &[i32]) -> f32 {
+    numbers.iter().sum::<i32>() as f32 / numbers.len() as f32
+}
+
+fn report(numbers: &[i32]) -> usize {
+    numbers.len()
 }
