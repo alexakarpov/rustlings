@@ -37,3 +37,5 @@ fn average(numbers: &[i32]) -> f32 {
 fn report(numbers: &[i32]) -> usize {
     numbers.len()
 }
+
+// fn piglatin
