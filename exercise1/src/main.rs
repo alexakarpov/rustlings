@@ -19,8 +19,13 @@ use std::collections::HashMap;
 
 fn main() {
     let mut si = [2, 32, 1, 32, 45, 32, 14, 3, 16, 12, 29, 9, 32, 45, 28, 45];
-    println!("mutable array: {:?}, of {:?} elements", si, report(&si));
+    println!("init array : {:?}, size {:?}", si, report(&si));
     let med = median(&mut si);
+    println!(
+        "array after sorting in median: {:?}, size {:?}",
+        si,
+        report(&si)
+    );
     let ave: f32 = average(&si);
     let mode = mode(&si);
     println!("median is {:?}", med);
@@ -52,17 +57,17 @@ fn mode(numbers: &[i32]) -> i32 {
     }
 
     let counts: Vec<(&i32, &i32)> = all.iter().collect();
-    println!("counts: {:?}", counts);
+    println!("counts vector (from map): {:?}", counts);
     let mut max: i32 = 0;
-    let mut modev = 0;
+    let mut mode = 0;
     for (v, count) in counts {
         println!("max is {:?}, count is {:?}, v is {:?}", max, count, v);
         if max < *count {
             max = *count;
-            modev = *v;
+            mode = *v;
         }
     }
-    modev
+    mode
 }
 
 fn median(numbers: &mut [i32]) -> i32 {
