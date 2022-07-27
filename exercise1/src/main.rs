@@ -15,13 +15,52 @@
 //     let the user retrieve a list of all people in a department or all
 //     people in the company by department, sorted alphabetically.
 
+use std::collections::HashMap;
+
 fn main() {
     let mut si = [2, 12, 1, 45, 14, 3, 16, 29, 9, 12, 45, 28, 45];
     println!("mutable array: {:?}, of {:?} elements", si, report(&si));
     let med = median(&mut si);
     let ave: f32 = average(&si);
+    let mode = mode(&si);
     println!("median is {:?}", med);
     println!("average is {:?}", ave);
+    println!("mode is {:?}", mode);
+}
+
+/*
+fn mode(numbers: &[i32]) -> i32 {
+    let mut occurrences = HashMap::new();
+
+    for &value in numbers {
+        *occurrences.entry(value).or_insert(0) += 1;
+    }
+
+    occurrences
+        .into_iter()
+        .max_by_key(|&(_, count)| count)
+        .map(|(val, _)| val)
+        .expect("Cannot compute the mode of zero numbers")
+}
+*/
+
+fn mode(numbers: &[i32]) -> i32 {
+    let mut all: HashMap<i32, i32> = HashMap::new();
+
+    for &n in numbers {
+        *all.entry(n).or_insert(0) += 1;
+    }
+
+    let mut vals: Vec<(&i32, &i32)> = all.iter().collect();
+    println!("vals: {:?}", vals);
+    let mut max: i32 = 0;
+    for (k, v) in vals {
+        println!("max is {:?}, v is {:?}", max, v);
+        if max < *v {
+            max = *v;
+        }
+    }
+    max
 }
 
 fn median(numbers: &mut [i32]) -> i32 {
