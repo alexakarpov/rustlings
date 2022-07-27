@@ -51,7 +51,7 @@ fn mode(numbers: &[i32]) -> i32 {
         *all.entry(n).or_insert(0) += 1;
     }
 
-    let mut counts: Vec<(&i32, &i32)> = all.iter().collect();
+    let counts: Vec<(&i32, &i32)> = all.iter().collect();
     println!("counts: {:?}", counts);
     let mut max: i32 = 0;
     let mut modev = 0;
